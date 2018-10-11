@@ -1,5 +1,6 @@
 
 header.Header {
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   font-size: 3em;

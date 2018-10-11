@@ -1,0 +1,26 @@
+.Message {
+  display: flex;
+  margin: .5em 1em;
+  flex-basis: auto;
+  min-height: min-content;
+}
+
+.Message > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Message > span {
+  flex-grow: 1;
+  white-space: pre-line;
+  text-align: left;
+}
+
+.Message img {
+  max-height: 3em;
+}
+
+.Message.self {
+  flex-direction: row-reverse;
+}

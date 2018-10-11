@@ -4,28 +4,21 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow: hidden;
 }
 
-.message {
-  display: flex;
-  margin: .5em 1em;
-}
-.message > div {
+.Chat .chatLog {
+  flex-basis: auto;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.message > span {
-  flex-grow: 1;
-}
-.message img {
-  max-height: 3em;
+  overflow-y: scroll;
 }
 
-.chat-footer {
+.Chat footer {
   display: flex;
+  flex-shrink: 0;
 }
-.chat-footer > textarea {
+.Chat footer > textarea {
   flex-grow: 1;
 }
