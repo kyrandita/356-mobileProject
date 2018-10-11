@@ -1,4 +1,5 @@
 .App {
+  position: fixed;
   text-align: center;
   display: flex;
   align-items: stretch;
