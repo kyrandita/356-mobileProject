@@ -18,7 +18,6 @@ html, body {
 }
 
 body {
-  /* font-size: 24pt; */
   display: flex;
   color: white;
   height: 100vh;
