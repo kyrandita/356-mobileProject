@@ -8,13 +8,9 @@ class Header extends Component {
       <header className="Header">
         <span>QuickChat</span>
         {this.props.room_code && <span>{this.props.room_code}</span>}
-        <button onClick={this.action}>⚙</button>
+        <button onClick={this.props.onClick()}>⚙</button>
       </header>
     );
-  }
-
-  action() {
-    console.log('this would load the settings modal');
   }
 }
 
