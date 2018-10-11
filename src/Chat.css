@@ -1,12 +1,4 @@
-
-
-footer {
-  color: #aaa;
-  background-color: #333;
-  text-align: center;
-}
-
-#chat-main {
+.Chat {
   color: black;
   background-color: rgba(255,255,255,.8);
   flex-grow: 1;
