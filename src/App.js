@@ -39,16 +39,16 @@ class App extends Component {
   newSession = () => {
     //get random code either from firebase that doesn't yet exist, or generate new ones until an unused one is found
     this.setState({room_code: 'AB5X3'});
-  }
+  };
 
   joinSession = (code) => {
     //TODO check code to see if room exists first
     this.setState({room_code: code});
-  }
+  };
 
   clearSession = () => {
     this.setState({room_code: ""});
-  }
+  };
 
   render() {
     return (
