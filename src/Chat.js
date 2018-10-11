@@ -32,11 +32,9 @@ class Chat extends Component {
     return (<div className="Chat">
       <div className='chatLog' ref='chatLog'>
       {
-        this.state.chatLog.map((item, index) => <Message message = {
-          item
-        }
+        this.state.chatLog.map((item, index) => <Message message = {item}
         self = {
-          item.id === 'WhiteFox7'
+          item.id === this.props.name
         }
         key = {
           index
@@ -60,7 +58,7 @@ class Chat extends Component {
 
   sendMessage(event) {
     this.setState({
-      chatLog: this.state.chatLog.concat({msg: this.state.newMessage, id: 'WhiteFox7', icon: 0}),
+      chatLog: this.state.chatLog.concat({msg: this.state.newMessage, id: this.props.name, icon: 0}),
       newMessage: ''
     });
   }

@@ -56,7 +56,7 @@ class App extends Component {
         <Header room_code={this.state.room_code} show={this.state.show} onClick={() => this.handleToggleSettings} clearSession={this.clearSession} />
         {
           this.state.room_code ?
-          <Chat room_code={this.state.room_code} /> :
+          <Chat room_code={this.state.room_code} name={this.state.name}/> :
           <Start newSession={this.newSession} joinSession={this.joinSession}/>
         }
 
