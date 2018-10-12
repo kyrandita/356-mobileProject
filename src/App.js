@@ -13,7 +13,7 @@ class App extends Component {
         room_code: (new URLSearchParams(document.location.search).get('r')) || '',
         show: false,
         name: 'whitefox7',
-        tempName: ''
+        tempName: 'whitefox7'
     }
   }
 
@@ -26,13 +26,7 @@ class App extends Component {
   handleUsernameChange = () => {
       // console.log('name before submit button: ', this.state.name);
       // console.log('tempName submit button: ', this.state.tempName);
-    this.setState(
-        {
-            name: this.state.tempName,
-            tempName: '',
-            show: !this.state.show
-        }
-        );
+    this.setState({name: this.state.tempName});
       // console.log('name after submit button: ', this.state.name);
   };
 
@@ -45,16 +39,16 @@ class App extends Component {
   newSession = () => {
     //get random code either from firebase that doesn't yet exist, or generate new ones until an unused one is found
     this.setState({room_code: 'AB5X3'});
-  }
+  };
 
   joinSession = (code) => {
     //TODO check code to see if room exists first
     this.setState({room_code: code});
-  }
+  };
 
   clearSession = () => {
     this.setState({room_code: ""});
-  }
+  };
 
   render() {
     return (
@@ -68,6 +62,7 @@ class App extends Component {
 
         <Settings
             show={this.state.show}
+            name={this.state.name}
             tempName={this.state.tempName}
             onToggleSettings={() => this.handleToggleSettings}
             onChangeUsername={() => this.handleUsernameChange}

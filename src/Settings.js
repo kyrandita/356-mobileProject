@@ -8,10 +8,10 @@ class Settings extends React.Component {
         return (
             <div className={showHideClassName}>
                 <section className="settings-main">
-                    <p>Change username</p>
+                    <label>Change username: </label>
                     <input type="text" value={this.props.tempName} onChange={this.props.onChange()} />
-                    <button onClick={this.props.onChangeUsername()}>Submit</button>
-                    <button onClick={this.props.onToggleSettings()}>Exit</button>
+                    <button disabled={this.props.tempName === this.props.name} onClick={this.props.onChangeUsername()}>Update</button>
+                    <button id="exit" onClick={this.props.onToggleSettings()}>Exit</button>
                 </section>
             </div>
         );
