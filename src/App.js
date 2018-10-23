@@ -72,7 +72,7 @@ class App extends Component {
         }
         {
           this.state.installable &&
-          <div>Add Shortuct to your homescreen? <button>ADD</button></div>
+          <div>Add Shortuct to your homescreen? <button onClick={this.promptInstall}>ADD</button></div>
         }
 
         <Settings
