@@ -3,8 +3,12 @@
   "name": "Chat Quick",
   "icons": [{
     "src": "chat-quick.ico",
-    "sizes": "64x64 32x32 24x24 16x16",
+    "sizes": "64x64 32x32 24x24 16x16 144x144",
     "type": "image/x-icon"
+  }, {
+    "src": "icons8-communication-100.png",
+    "sizes": "144x144",
+    "type": "image/png"
   }],
   "start_url": ".",
   "display": "standalone",

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import Header from './Header.js';
 import Start from './Start.js';
 import Chat from './Chat.js';
@@ -13,8 +12,10 @@ class App extends Component {
         room_code: (new URLSearchParams(document.location.search).get('r')) || '',
         show: false,
         name: 'whitefox7',
-        tempName: 'whitefox7'
+        tempName: 'whitefox7',
+        installable: false
     }
+    //TODO bind beforeInstallPrompt event, store, show minimal user interface, allow install
   }
 
   handleToggleSettings = () => {
@@ -49,6 +50,12 @@ class App extends Component {
   clearSession = () => {
     this.setState({room_code: ""});
   };
+
+  beforeInstallPrompt = (e) => {
+    e.preventDefault();
+    this.installEvent = e;
+    this.setState({installable: true});
+  }
 
   render() {
     return (
