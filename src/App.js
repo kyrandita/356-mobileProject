@@ -57,6 +57,10 @@ class App extends Component {
     this.setState({installable: true});
   }
 
+  promptInstall = () => {
+    this.installEvent.prompt();
+  }
+
   render() {
     return (
       <div className="App">
@@ -65,6 +69,10 @@ class App extends Component {
           this.state.room_code ?
           <Chat room_code={this.state.room_code} name={this.state.name}/> :
           <Start newSession={this.newSession} joinSession={this.joinSession}/>
+        }
+        {
+          this.state.installable &&
+          <div>Add Shortuct to your homescreen? <button>ADD</button></div>
         }
 
         <Settings
