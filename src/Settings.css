@@ -45,3 +45,8 @@
 .display-none {
     display: none;
 }
+
+.theme-select {
+    width: 20%;
+    height: auto;
+}

@@ -13,7 +13,8 @@ class App extends Component {
         room_code: (new URLSearchParams(document.location.search).get('r')) || '',
         show: false,
         name: 'whitefox7',
-        tempName: 'whitefox7'
+        tempName: 'whitefox7',
+        theme: '1'
     }
   }
 
@@ -30,10 +31,20 @@ class App extends Component {
       // console.log('name after submit button: ', this.state.name);
   };
 
+  handleThemeChange = () => {
+      // Actually change theme here
+  };
+
   handleChange = (n) => {
     // console.log('n.target.value: ', n.target.value);
     this.setState({ tempName: n.target.value });
     // console.log('name: ', this.state.name);
+  };
+
+  handleChange2 = (n) => {
+      console.log('selected theme: ', n.target.value);
+
+      this.setState({theme: n.target.value});
   };
 
   newSession = () => {
@@ -64,9 +75,12 @@ class App extends Component {
             show={this.state.show}
             name={this.state.name}
             tempName={this.state.tempName}
+            theme={this.state.theme}
             onToggleSettings={() => this.handleToggleSettings}
             onChangeUsername={() => this.handleUsernameChange}
+            onChangeTheme={() => this.handleThemeChange}
             onChange={() => this.handleChange}
+            onChange2={() => this.handleChange2}
         />
       </div>
     );
