@@ -92,7 +92,7 @@ class App extends Component {
             tempName={this.state.tempName}
             theme={this.state.theme}
             onToggleSettings={() => this.handleToggleSettings}
-            onChangeUsername={() => this.handleUsernameChange}
+            onChangeUsername={() => this.handleUsernameChange()}
             onChangeTheme={() => this.handleThemeChange}
             onChange={() => this.handleChange}
             onChange2={() => this.handleChange2}
