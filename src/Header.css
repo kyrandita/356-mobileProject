@@ -11,9 +11,4 @@ header.Header {
   border: none;
   background: none;
   font-size: .8em;
-  color: white;
-}
-
-.Header button:hover {
-  font-size: .9em;
 }

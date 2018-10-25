@@ -12,19 +12,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--primary);
-  color: white;
-  padding: .5em;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
-  border-top-left-radius: 1em;
 }
 
 .Message > span {
   white-space: pre-line;
   text-align: left;
   word-break: break-word;
-  padding: .25em .5em 0;
 }
 
 .Message img {
@@ -33,11 +26,4 @@
 
 .Message.self {
   flex-direction: row-reverse;
-  border-right: none;
-  border-left: 3px solid var(--primary);
-}
-
-.Message.self > div {
-  border-top-left-radius: 0;
-  border-top-right-radius: 1em;
 }

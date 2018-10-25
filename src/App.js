@@ -13,7 +13,7 @@ class App extends Component {
         show: false,
         name: 'whitefox7',
         tempName: 'whitefox7',
-        theme: '1',
+        theme: 'dark',
         installable: false
     }
     //TODO bind beforeInstallPrompt event, store, show minimal user interface, allow install
@@ -74,7 +74,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={`App ${this.state.theme}`}>
         <Header room_code={this.state.room_code} show={this.state.show} onClick={() => this.handleToggleSettings} clearSession={this.clearSession} />
         {
           this.state.room_code ?

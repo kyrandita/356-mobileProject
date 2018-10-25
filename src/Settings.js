@@ -11,16 +11,18 @@ class Settings extends React.Component {
                     <label>Change username: </label>
                     <input type="text" value={this.props.tempName} onChange={this.props.onChange()} />
                     <button disabled={this.props.tempName === this.props.name} onClick={this.props.onChangeUsername()}>Update</button>
-                    <button id="exit" onClick={this.props.onToggleSettings()}>Exit</button>
+                    <button id="exit" onClick={this.props.onToggleSettings()}>X</button>
+                    {/*<img src={require("./gray-x-icon.png")} id='gray-x-icon' />-->*/}
 
                     <br />
                     <br />
 
+                    <label>Change theme: </label>
                     <select className="theme-select" value={this.props.theme} onChange={this.props.onChange2()}>
-                        <option value="Theme 1">Theme 1</option>
-                        <option value="Theme 2">Theme 2</option>
+                        <option value="dark">Dark</option>
+                        <option value="light">Light</option>
                     </select>
-                    <button onClick={this.props.onChangeTheme()}>Update</button>
+                    <button onClick={this.props.onChangeTheme()}>Save</button>
                 </section>
             </div>
         );

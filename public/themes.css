@@ -1,0 +1,118 @@
+.App.light .Chat, .App.light .settings-main {
+
+}
+
+.App.dark {
+    color: white;
+    background-color: darkslategray;
+    background-image: url("dark-themes/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    --primary: #495373;
+}
+
+.App.dark button.action-primary {
+    padding: 10px;
+    background-color: var(--primary);
+    color: white;
+    font-family: sans-serif;
+}
+
+.App.dark button.action-secondary {
+    background-color: white;
+    color: var(--primary);
+}
+
+.App.dark button {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.App.dark input {
+    font-size: 1em;
+}
+
+.App.dark .Chat, .App.dark .settings-main{
+    color: black;
+    background-color: rgba(255,255,255,.8);
+}
+
+.App.dark .Header button {
+    color: white;
+}
+
+.App.dark .Message > div {
+    background-color: var(--primary);
+    color: white;
+    padding: .5em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.App.dark .Message > span {
+    padding: .25em .5em 0;
+}
+
+.App.dark .Message.self {
+    border-right: none;
+    border-left: 3px solid var(--primary);
+}
+
+.App.dark .Message.self > div {
+    border-top-left-radius: 0;
+    border-top-right-radius: 1em;
+}
+
+.App.light .settings {
+    background-color: rgba(0, 0, 0, .65);
+}
+
+.App.dark .settings {
+    background-color: rgba(255, 255, 255, .25);
+}
+
+.App.dark .settings-main {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,.8);
+    background-image: url("dark-themes/settings-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+}
+
+.App.dark #exit {
+    border: none;
+    border-bottom-left-radius: 10px;
+    font-size: 1.5em;
+}
+
+.App.dark .settings-main label {
+    color: gray;
+}
+
+.App.dark .Start {
+    background-color: rgba(0,0,0,.3);
+}
+
+.App.dark .Start > * {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.App.dark .Start > div {
+    color: black;
+    background-color: white;
+    padding: 0px;
+}
+
+.App.dark .Start > div > input {
+    border: none;
+    padding: 10px;
+}
+
+.App.dark .Start > div > button {
+    border: none;
+    border-left: 1px solid var(--primary);
+}
