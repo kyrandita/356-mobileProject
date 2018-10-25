@@ -29,7 +29,6 @@ class Settings extends React.Component {
                         <option value="dark">Dark</option>
                         <option value="light">Light</option>
                     </select>
-                    <button onClick={this.props.onChangeTheme()}>Save</button>
                 </section>
             </div>
         );
