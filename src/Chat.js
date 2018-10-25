@@ -43,7 +43,7 @@ class Chat extends Component {
       </div>
       <footer className="chat-footer">
         <textarea onChange={this.typing} onKeyDown={this.onEnterPress} value={this.state.newMessage} placeholder="Get chatting!"></textarea>
-        <span>Press enter to send</span>
+        <span>Enter to send</span>
       </footer>
     </div>);
   }
