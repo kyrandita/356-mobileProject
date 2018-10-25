@@ -8,19 +8,18 @@
     background-image: url("dark-themes/1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    --primary: #495373;
 }
 
 .App.dark button.action-primary {
     padding: 10px;
-    background-color: var(--primary);
+    background-color: #495373;
     color: white;
     font-family: sans-serif;
 }
 
 .App.dark button.action-secondary {
     background-color: white;
-    color: var(--primary);
+    color: #495373;
 }
 
 .App.dark button {
@@ -37,12 +36,26 @@
     background-color: rgba(255,255,255,.8);
 }
 
+.App.dark .Chat footer {
+    background-color: white;
+}
+
+.App.dark .Chat footer > textarea {
+    border: none;
+    padding: .5em;
+}
+
+.App.dark .Chat footer > span {
+    padding: .5em;
+}
+
 .App.dark .Header button {
     color: white;
+    font-family: LineAwesome sans-serif;
 }
 
 .App.dark .Message > div {
-    background-color: var(--primary);
+    background-color: #495373;
     color: white;
     padding: .5em;
     border-bottom-left-radius: 1em;
@@ -56,7 +69,7 @@
 
 .App.dark .Message.self {
     border-right: none;
-    border-left: 3px solid var(--primary);
+    border-left: 3px solid #495373;
 }
 
 .App.dark .Message.self > div {
@@ -114,5 +127,5 @@
 
 .App.dark .Start > div > button {
     border: none;
-    border-left: 1px solid var(--primary);
+    border-left: 1px solid #495373;
 }

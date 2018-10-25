@@ -8,11 +8,11 @@ class Header extends Component {
       <header className="Header">
         {
           this.props.room_code ?
-          <span onClick={this.props.clearSession}>&lt;</span> :
+          <span onClick={this.props.clearSession}><i className="la la-arrow-circle-left"></i></span> :
           <span>QuickChat</span>
         }
         {this.props.room_code && <span>{this.props.room_code}</span>}
-        <button onClick={this.props.onClick()}>⚙</button>
+        <button onClick={this.props.onClick()}><i className="la la-cog"></i></button>
       </header>
     );
   }

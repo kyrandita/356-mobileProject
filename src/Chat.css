@@ -19,5 +19,6 @@
 }
 .Chat footer > textarea {
   flex-grow: 1;
+  resize: none;
 }
 

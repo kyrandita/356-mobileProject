@@ -42,8 +42,8 @@ class Chat extends Component {
       }
       </div>
       <footer className="chat-footer">
-        <textarea onChange={this.typing} onKeyDown={this.onEnterPress} value={this.state.newMessage}></textarea>
-        <button className="action-primary" onClick={this.sendMessage}>Send</button>
+        <textarea onChange={this.typing} onKeyDown={this.onEnterPress} value={this.state.newMessage} placeholder="Get chatting!"></textarea>
+        <span>Press enter to send</span>
       </footer>
     </div>);
   }

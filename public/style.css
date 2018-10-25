@@ -20,3 +20,8 @@ body {
   max-height: 100vh;
   flex-direction: column;
 }
+
+@font-face {
+  font-family: "LineAwesome";
+  src: url(/public/LineAwesome/fonts/line-awesome.ttf) format("truetype");
+}
