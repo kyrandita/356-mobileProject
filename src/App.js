@@ -61,7 +61,7 @@ class App extends Component {
 
     makeId = () => {
         let text = "";
-        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let possible = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
         for (let i = 0; i < 5; i++) {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         }
