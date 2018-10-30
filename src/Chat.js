@@ -1,40 +1,44 @@
 import React, {Component} from 'react';
 import Message from './Message.js';
 import './Chat.css';
+import firebase from './firebase';
 
 class Chat extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chatLog: [
-        {
-          msg: "Hey, we just finished with our part of the project, are you guys ready?",
-          id: "WhiteFox7",
-          icon: 1
-        }, {
-          msg: "We'll be done in a few minutes... should we meet you guys at the café?",
-          id: "PurpleZebra88",
-          icon: 2
-        }, {
-          msg: "sounds good, see you there",
-          id: "WhiteFox7",
-          icon: 1
-        }
-      ],
-      newMessage: ""
+      // chatLog: [
+      //   {
+      //     msg: "Hey, we just finished with our part of the project, are you guys ready?",
+      //     id: "WhiteFox7",
+      //     icon: 1
+      //   }, {
+      //     msg: "We'll be done in a few minutes... should we meet you guys at the café?",
+      //     id: "PurpleZebra88",
+      //     icon: 2
+      //   }, {
+      //     msg: "sounds good, see you there",
+      //     id: "WhiteFox7",
+      //     icon: 1
+      //   }
+      // ],
+        chatLog: {},
+        newMessage: ""
     };
     this.typing = this.typing.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.onEnterPress = this.onEnterPress.bind(this);
+    this.getMessagesFromFirebase();
+    this.syncFirebase();
   }
 
   render() {
     return (<div className="Chat">
       <div className='chatLog' ref='chatLog'>
       {
-        this.state.chatLog.map((item, index) => <Message message = {item}
+        Object.keys(this.state.chatLog).map((key, index) => <Message message = {this.state.chatLog[key]}
         self = {
-          item.id === this.props.name
+          this.state.chatLog[key].id === this.props.name
         }
         key = {
           index
@@ -48,6 +52,27 @@ class Chat extends Component {
     </div>);
   }
 
+  syncFirebase () {
+      this.intervalId = setInterval(() => {
+          this.getMessagesFromFirebase();
+      }, 5000);
+  }
+
+  componentWillUnmount() {
+      clearInterval(this.intervalId);
+  }
+
+  getMessagesFromFirebase() {
+      const messagesRef = firebase.database().ref(`${this.props.room_code}/chat-log`);
+      // console.log('messagesRef: ', messagesRef);
+
+      messagesRef.on('value', (snapshot) => {
+          // console.log('snapshot.val(): ', snapshot.val());
+          this.setState({chatLog: snapshot.val()});
+          // console.log('chatLog: ', this.state.chatLog);
+      });
+  }
+
   componentDidUpdate(oldProps, oldState) {
     this.refs.chatLog.scrollTo(0,this.refs.chatLog.scrollHeight);
   }
@@ -57,8 +82,19 @@ class Chat extends Component {
   }
 
   sendMessage(event) {
+      // console.log('this.state.chatLog: ', this.state.chatLog);
+      const messagesRef = firebase.database().ref(`${this.props.room_code}/chat-log`);
+      let message = {
+          msg: this.state.newMessage,
+          id: this.props.name,
+          icon: this.props.icon
+      };
+
+      messagesRef.push(message).then(
+
+      );
+
     this.setState({
-      chatLog: this.state.chatLog.concat({msg: this.state.newMessage, id: this.props.name, icon: 0}),
       newMessage: ''
     });
   }

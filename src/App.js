@@ -4,17 +4,20 @@ import Start from './Start.js';
 import Chat from './Chat.js';
 import Settings from './Settings.js';
 import './App.css';
+import firebase from './firebase';
 
 class App extends Component {
   constructor(props) {
     super(props);
+    let name = this.randomizeName();
     this.state = {
         room_code: (new URLSearchParams(document.location.search).get('r')) || '',
         show: false,
-        name: 'whitefox7',
-        tempName: 'whitefox7',
+        name: name,
+        tempName: name,
         theme: 'dark',
-        installable: false
+        installable: false,
+        icon: Math.floor(Math.random() * 3)
     }
     //TODO bind beforeInstallPrompt event, store, show minimal user interface, allow install
   }
@@ -48,14 +51,65 @@ class App extends Component {
       this.setState({theme: n.target.value});
   };
 
+  randomizeName = () => {
+      let colors = ['red', 'blue', 'green', 'yellow', 'purple', 'white', 'pink', 'amaranth', 'amber', 'azure', 'blush', 'brown', 'burgundy', 'bronze', 'magenta', 'lime', 'orange', 'scarlet', 'sapphire', 'silver'];
+      // Math.floor(Math.random() * 100);
+      let animals = ['fox', 'zebra', 'elephant', 'horse', 'giraffe', 'mongoose', 'bird', 'cow', 'dog', 'cat', 'pig', 'raccoon', 'ferret', 'rabbit', 'badger', 'wolverine', 'weasel', 'sloth', 'slug'];
+
+      return colors[Math.floor(Math.random() * colors.length)] + animals[Math.floor(Math.random() * animals.length)] + Math.floor(Math.random() * 100).toString();
+  };
+
+    makeId = () => {
+        let text = "";
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for (let i = 0; i < 5; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    };
+
   newSession = () => {
     //get random code either from firebase that doesn't yet exist, or generate new ones until an unused one is found
-    this.setState({room_code: 'AB5X3'});
+
+      const getAllSessions = firebase.database().ref();
+
+      getAllSessions.once('value', (snapshot) => {
+          // if (snapshot.key)
+          let newSessionCode;
+          console.log(snapshot.hasChild('asdf'));
+
+          do {
+              newSessionCode = this.makeId();
+          } while (snapshot.hasChild(newSessionCode));
+
+          getAllSessions.child(newSessionCode).set({
+              'chat-log': [{
+                  msg: "Welcome to your new session! Please give the code above to other participants, and follow safe online chat practices (if you don't know what those are, go ask your parents!).",
+                  id: 'Chat Bot',
+                  icon: 1
+              }],
+              'created-at': (new Date()).toISOString()
+          });
+
+          this.setState({room_code: newSessionCode});
+      });
   };
 
   joinSession = (code) => {
     //TODO check code to see if room exists first
-    this.setState({room_code: code});
+
+      const checkIfSessionExists = firebase.database().ref(code);
+      checkIfSessionExists.once('value', (snapshot) => {
+          // console.log('snapshot 1123: ', snapshot.val());
+
+          if (snapshot.val()) {
+              this.setState({room_code: code});
+          } else {
+              alert('That chat room does not exist. Please verify that your session code is correct.');
+          }
+      });
+      // console.log('test: ', test);
   };
 
   clearSession = () => {
@@ -78,8 +132,15 @@ class App extends Component {
         <Header room_code={this.state.room_code} show={this.state.show} onClick={() => this.handleToggleSettings} clearSession={this.clearSession} />
         {
           this.state.room_code ?
-          <Chat room_code={this.state.room_code} name={this.state.name}/> :
-          <Start newSession={this.newSession} joinSession={this.joinSession}/>
+          <Chat
+              room_code={this.state.room_code}
+              name={this.state.name}
+              icon={this.state.icon}
+          /> :
+          <Start
+              newSession={this.newSession}
+              joinSession={this.joinSession}
+          />
         }
         {
           this.state.installable &&
