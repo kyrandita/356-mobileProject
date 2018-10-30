@@ -54,6 +54,12 @@
     font-family: LineAwesome sans-serif;
 }
 
+.App.dark .Message {
+    border-top: 3px solid #495373;
+    border-right: 3px solid #495373;
+    border-radius: 1.1em;
+}
+
 .App.dark .Message > div {
     background-color: #495373;
     color: white;
