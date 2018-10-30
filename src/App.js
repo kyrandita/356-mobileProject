@@ -77,7 +77,7 @@ class App extends Component {
       getAllSessions.once('value', (snapshot) => {
           // if (snapshot.key)
           let newSessionCode;
-          console.log(snapshot.hasChild('asdf'));
+          // console.log(snapshot.hasChild('asdf'));
 
           do {
               newSessionCode = this.makeId();
@@ -98,6 +98,8 @@ class App extends Component {
 
   joinSession = (code) => {
     //TODO check code to see if room exists first
+
+      code = code.toUpperCase();
 
       const checkIfSessionExists = firebase.database().ref(code);
       checkIfSessionExists.once('value', (snapshot) => {
