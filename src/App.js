@@ -19,7 +19,36 @@ class App extends Component {
         installable: false,
         icon: Math.floor(Math.random() * 3)
     }
-    //TODO bind beforeInstallPrompt event, store, show minimal user interface, allow install
+    this.initializeDB();
+  }
+
+  initializeDB = () => {
+    if(window.indexedDB) {
+      let DBOpenRequest = window.indexedDB.open('chatQuick', 1);
+      DBOpenRequest.onupgradeneeded = () => {
+        let settingsStore = DBOpenRequest.result.createObjectStore('settings');
+      };
+      DBOpenRequest.onsuccess = (e) => {
+        this.db = DBOpenRequest.result;
+        this.readSettingsFromDB();
+      };
+    }
+  }
+
+  readSettingsFromDB = () => {
+    if (this.db){
+      let transaction = this.db.transaction(['settings'], 'readonly');
+      let settingStore = transaction.objectStore('settings');
+      let nameRequest = settingStore.get('name');
+      nameRequest.onsuccess = (e) => {
+        console.log(nameRequest.result, this.state.name);
+        if (nameRequest.result === undefined) {
+          this.handleUsernameChange()
+        } else {
+          this.setState({name: nameRequest.result, tempName: nameRequest.result});
+        }
+      }
+    }
   }
 
   handleToggleSettings = () => {
@@ -32,6 +61,15 @@ class App extends Component {
       // console.log('name before submit button: ', this.state.name);
       // console.log('tempName submit button: ', this.state.tempName);
     this.setState({name: this.state.tempName});
+    if (this.db) {
+      let transaction = this.db.transaction(['settings'], 'readwrite');
+      let settingStore = transaction.objectStore('settings');
+      let nameRequest = settingStore.put(this.state.name, 'name');
+      nameRequest.onsuccess = (e) => {
+        console.log(e);
+        console.log(nameRequest);
+      }
+    }
       // console.log('name after submit button: ', this.state.name);
   };
 
