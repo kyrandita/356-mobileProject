@@ -27,7 +27,7 @@ class Settings extends React.Component {
                     <label>Change theme: </label>
                     <select className="theme-select" value={this.props.theme} onChange={this.props.onChange2()}>
                         <option value="dark">Dark</option>
-                        <option value="light">Light</option>
+                        <option value="unicorn">Unicorn</option>
                     </select>
                 </section>
             </div>

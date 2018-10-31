@@ -1,0 +1,132 @@
+
+.App.unicorn {
+    color: black;
+    background-color: lightblue;
+    background-image: url("theme-unicorn/background.jpg");
+}
+
+.App.unicorn button.action-primary {
+    padding: 10px;
+    background-color: lightblue;
+    color: black;
+    font-family: sans-serif;
+}
+
+.App.unicorn button.action-secondary {
+    background-color: white;
+    color: deeppink;
+}
+
+.App.unicorn button {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.App.unicorn input {
+    font-size: 1em;
+}
+
+.App.unicorn .Chat, .App.unicorn .settings-main{
+    color: white;
+    background-color: rgba(0,0,0,.3);
+}
+
+.App.unicorn .Chat footer {
+    background-color: white;
+}
+
+.App.unicorn .Chat footer > textarea {
+    border: none;
+    padding: .5em;
+}
+
+.App.unicorn .Chat footer > span {
+    padding: .5em;
+}
+
+.App.unicorn .Header button {
+    color: black;
+    font-family: LineAwesome sans-serif;
+}
+
+.App.unicorn .Message {
+    border-top: 3px solid deeppink;
+    border-right: 3px solid deeppink;
+    border-radius: 1.1em;
+    background-color: rgba(255,255,255,.8);
+}
+
+.App.unicorn .Message > div {
+    background-color: deeppink;
+    color: white;
+    padding: .5em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.App.unicorn .Message > span {
+    padding: .25em .5em 0;
+    color: black;
+    font-weight: bold;
+}
+
+.App.unicorn .Message.self {
+    border-right: none;
+    border-left: 3px solid deeppink;
+}
+
+.App.unicorn .Message.self > div {
+    border-top-left-radius: 0;
+    border-top-right-radius: 1em;
+}
+
+
+.App.unicorn .settings {
+    background-color: rgba(255, 255, 255, .25);
+}
+
+.App.unicorn .settings-main {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: hotpink;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+}
+
+.App.unicorn #exit {
+    border: none;
+    border-bottom-left-radius: 10px;
+    font-size: 1.5em;
+}
+
+.App.unicorn .settings-main label {
+    color: white;
+    font-weight: bold;
+}
+
+.App.unicorn .Start {
+    background-color: rgba(0,0,0,.3);
+}
+
+.App.unicorn .Start > * {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.App.unicorn .Start > div {
+    color: black;
+    background-color: white;
+    padding: 0px;
+}
+
+.App.unicorn .Start > div > input {
+    border: none;
+    padding: 10px;
+}
+
+.App.unicorn .Start > div > button {
+    border: none;
+    border-left: 1px solid #495373;
+}
